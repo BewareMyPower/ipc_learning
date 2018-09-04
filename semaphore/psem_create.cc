@@ -1,13 +1,9 @@
 // psem_create.cc
-#include <semaphore.h>
 #include <stdlib.h>
 #include <sys/stat.h>
-#include <fcntl.h>
 #include <unistd.h>
 
-#include "include/error_handler.hpp"
-
-using namespace error_handler;
+#include "sem_util.h"
 
 static void UsageError(const char* name) {
     errorExit("Usage: %s [-cx] name [octal-perms [value]]\n"
@@ -17,17 +13,14 @@ static void UsageError(const char* name) {
 
 static const char* sem_name = NULL;       // 信号量名
 static int flags = 0;                     // 文件打开标志
-static mode_t perms = S_IRUSR | S_IWUSR;  // 默认创建权限"rw-------"
-static unsigned int sem_value = 0;                 // 信号量初始值
+static mode_t perms = DEFAULT_PERM;       // 默认创建权限"rw-------"
+static unsigned int sem_value = 0;        // 信号量初始值
 
 static void ParseArgs(int argc, char* argv[]);
 
 int main(int argc, char* argv[]) {
     ParseArgs(argc, argv);
-
-    sem_t* sem = sem_open(sem_name, flags, perms, sem_value);
-    if (sem == SEM_FAILED) errorExit(errno, "sem_open \"%s\"", sem_name);
-
+    SemOpen(sem_name, flags, perms, sem_value);
     return 0;
 }
 
