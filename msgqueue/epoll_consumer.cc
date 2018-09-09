@@ -3,11 +3,8 @@
 #include <signal.h>
 #include <sys/epoll.h>
 #include <unistd.h>
-
 #include <string>
-
-#include "include/error_handler.hpp"
-using namespace error_handler;
+#include "error_handler.hpp"
 
 class MyData {
 public:

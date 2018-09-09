@@ -2,9 +2,7 @@
 #include <mqueue.h>
 #include <signal.h>
 #include <unistd.h>
-
-#include "include/error_handler.hpp"
-using namespace error_handler;
+#include "error_handler.hpp"
 
 constexpr int NOTIFY_SIG = SIGUSR1;
 

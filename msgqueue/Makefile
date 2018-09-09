@@ -4,7 +4,7 @@ LIBRT = -lrt
 LIBPTHREAD = -lpthread
 PROGS = pmsg_create pmsg_unlink pmsg_getattr pmsg_send pmsg_receive sample \
 		mq_notify_sig mq_notify_thread epoll_consumer
-ROOT = ..
+ROOT = ../include
 
 all: $(PROGS)
 

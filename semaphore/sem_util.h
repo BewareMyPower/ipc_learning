@@ -3,9 +3,7 @@
 
 #include <semaphore.h>
 #include <fcntl.h>
-
-#include "include/error_handler.hpp"
-using namespace error_handler;
+#include "error_handler.hpp"
 
 constexpr mode_t DEFAULT_PERM = S_IRUSR | S_IWUSR;  // 默认创建权限"rw-------"
 

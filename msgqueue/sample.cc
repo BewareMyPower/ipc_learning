@@ -1,8 +1,6 @@
 // sample.cc
 #include <mqueue.h>
-
-#include "include/error_handler.hpp"  // include errno.h
-using namespace error_handler;
+#include "error_handler.hpp"  // include errno.h
 
 int main() {
     const char* mq_name = "/mq";
@@ -23,7 +21,7 @@ mq_create_again:
     }
     mq_close(mqd);
 
-    // 2. 发送3个消息到消息队列中 
+    // 2. 发送3个消息到消息队列中
     mqd = mq_open(mq_name, O_WRONLY | O_NONBLOCK);
     if (mqd == -1) errorExit(errno, "mqd_open \"%s\" O_WRONLY | O_NONBLOCK", mq_name);
 

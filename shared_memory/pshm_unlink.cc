@@ -1,8 +1,7 @@
 // pshm_unlink.cc
 #include <fcntl.h>
 #include <sys/mman.h>
-#include "include/error_handler.hpp"
-using namespace error_handler;
+#include "error_handler.hpp"
 
 int main(int argc, char* argv[]) {
     if (argc != 2)

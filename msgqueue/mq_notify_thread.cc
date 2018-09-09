@@ -3,9 +3,7 @@
 #include <pthread.h>
 #include <signal.h>
 #include <unistd.h>
-
-#include "include/error_handler.hpp"
-using namespace error_handler;
+#include "error_handler.hpp"
 
 static void notifySetup(mqd_t& mqd);  // 向消息队列中注册通知线程
 

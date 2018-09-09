@@ -3,7 +3,7 @@ FLAGS = -g -std=c++11
 LIBRT = -lrt
 LIBPTHREAD = -lpthread
 PROGS = pshm_create pshm_write pshm_read pshm_unlink
-ROOT = ..
+ROOT = ../include
 
 all: $(PROGS)
 
