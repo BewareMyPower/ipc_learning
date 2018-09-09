@@ -2,7 +2,7 @@ CC = g++
 FLAGS = -g -std=c++11
 LIBRT = -lrt
 LIBPTHREAD = -lpthread
-PROGS = psem_create psem_unlink psem_wait psem_post psem_getvalue
+PROGS = psem_create psem_unlink psem_wait psem_post psem_getvalue thread_incr_psem
 ROOT = ..
 
 all: $(PROGS)
