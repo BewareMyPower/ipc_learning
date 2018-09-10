@@ -1,9 +1,7 @@
 // pmsg_receive.cc
 #include <mqueue.h>
 #include <unistd.h>
-
-#include "include/error_handler.hpp"
-using namespace error_handler;
+#include "error_handler.hpp"
 
 inline void usageError(const char* name) {
     errorExit("Usage: %s [-n] mq_name\n"

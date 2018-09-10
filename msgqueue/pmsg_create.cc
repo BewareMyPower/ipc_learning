@@ -1,10 +1,7 @@
 // pmsg_create.cc
 #include <mqueue.h>
 #include <unistd.h>
-
-#include "include/error_handler.hpp"
-
-using namespace error_handler;
+#include "error_handler.hpp"
 
 static inline void UsageError(const char* name) {
     errorExit("Usage: %s [-cx] [-m maxmsg] [-s msgsize] mq-name "
