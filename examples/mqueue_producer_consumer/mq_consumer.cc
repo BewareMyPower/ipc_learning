@@ -4,7 +4,7 @@
 #include <sys/epoll.h>
 #include "mq_protocol.h"
 #include "mq_util.h"
-#include "print_util.h"
+#include "hex_dump.h"
 
 static bool do_receive = true;
 

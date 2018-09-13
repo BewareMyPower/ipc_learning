@@ -9,7 +9,7 @@ all: $(PROGS)
 %: %.cc mq_protocol.h mq_util.h
 	g++ $(CXXFLAGS) -I $(INCLUDE) $< $(LIBRT) -o $@
 
-mq_consumer: mq_consumer.cc mq_protocol.h mq_util.h print_util.h
+mq_consumer: mq_consumer.cc mq_protocol.h mq_util.h $(INCLUDE)/hex_dump.h
 	g++ $(CXXFLAGS) -I $(INCLUDE) $< $(LIBRT) -o $@
 
 clean:
