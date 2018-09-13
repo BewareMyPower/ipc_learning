@@ -36,7 +36,7 @@ hello, world
 producer stopped.
 # ./mq_producer /xyz <data.txt
 producer stopped.
-~/ipc_learning/examples# ./mq_consumer /xyz
+# ./mq_consumer /xyz
 [Message id: 1] 12 bytes:
 00000000  68 65 6c 6c 6f 2c 20 77  6f 72 6c 64              |hello, world|
 0000000c
