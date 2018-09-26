@@ -32,15 +32,15 @@ int main(int argc, char* argv[]) {
         errorExit("Usage: %s mq-name...", argv[0]);
 
     // 打开消息队列并初始化相关数据
-    std::unordered_map<int, std::unique_ptr<MQueue>> mqMap;
+    std::unordered_map<int, std::unique_ptr<MQueue>> mq_map;
     for (int i = 1; i < argc; i++) {
-        std::unique_ptr<MQueue> mqPtr{new MQueue(argv[i], O_RDONLY | O_NONBLOCK)};
-        mqMap.emplace(mqPtr->fd, std::move(mqPtr));
+        std::unique_ptr<MQueue> mq_ptr{new MQueue(argv[i], O_RDONLY | O_NONBLOCK)};
+        mq_map.emplace(mq_ptr->fd, std::move(mq_ptr));
     }
 
     // 创建I/O多路复用对象监听各个消息队列
     Poller poller;
-    for (auto& kv : mqMap)
+    for (auto& kv : mq_map)
         poller.add(kv.first, EPOLLIN);
     poller.registerInterruptSignal(SIGINT);
 
@@ -52,11 +52,11 @@ int main(int argc, char* argv[]) {
 
         // 消费消息队列
         for (auto& ev : events) {
-            auto& mqPtr = mqMap.at(ev.data.fd);
-            if (!mqPtr)
+            auto& mq_ptr = mq_map.at(ev.data.fd);
+            if (!mq_ptr)
                 errorExit("fd: %d associate with nullptr", ev.data.fd);
-            while (mqPtr->receive() >= 0)
-                printf("%s receives: %s\n", mqPtr->name.data(), mqPtr->buffer.data());
+            while (mq_ptr->receive() >= 0)
+                printf("%s receives: %s\n", mq_ptr->name.data(), mq_ptr->buffer.data());
         }
     }
 
