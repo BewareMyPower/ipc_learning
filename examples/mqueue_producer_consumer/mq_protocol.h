@@ -6,9 +6,9 @@
 
 #pragma pack(1)
 struct Message {
-    uint32_t id;
-    uint8_t length;
-    char info[1];  // flexible array
+  uint32_t id;
+  uint8_t length;
+  char info[1];  // flexible array
 };
 #pragma pack()
 
